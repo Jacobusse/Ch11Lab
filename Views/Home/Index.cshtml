@@ -1,0 +1,28 @@
+﻿@model UserTickets
+@{
+    ViewData["Title"] = "User Tickets Page";
+}
+
+<h3 class="h3">@Model.User.Email</h3>
+<form asp-action="ClearCookie" method="get">
+    <button type="submit" class="btn btn-primary">Clear Cookie</button>
+</form>
+
+<form asp-action="Index" method="post">
+    <div class="row mt-2">
+        <div class="col-6">
+            <a class="btn btn-secondary">Add</a>
+        </div>
+    </div>
+
+    <ul id="ticketList" class="list-group mt-2 w-50">
+    @for (int i = 0; i < Model.Tickets.Count; ++i) {
+        <li id="item@(i)" class="list-group-item">
+            <input asp-for="Tickets[i]" type="text" class="form-control d-inline w-75" />
+            <a class="btn btn-danger btn-sm">Remove</a>
+        </li>
+    }
+    </ul>
+
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+</form>
