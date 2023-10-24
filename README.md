@@ -8,7 +8,7 @@ string? json = Request?.Cookies["user"];
 if (String.IsNullOrEmpty(json)) 
     return RedirectToAction("UserCheck");
 
-return View(new UserTickets());
+return View(new UserTickets() { User = new User() });
 ```
 -   - the `return` is replaced.
     - Create new action in Home Controller, `[Get] UserCheck`.
